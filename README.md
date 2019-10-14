@@ -1,1 +1,1 @@
-# bezier-curve-splitter
+# Bezier Curve Splitter
