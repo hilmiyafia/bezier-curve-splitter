@@ -6,25 +6,25 @@ This repository contains a python module that splits a bezier curve into several
   <img src="example.gif">
 </p>
 
-## Usage
-1. Import splitter.
+## Usage Example
 ```python
 import splitter
-```
-2. Initialize your bezier curve control points.
-```python
+import matplotlib.pyplot as pyplot
+
+points_interval = 0.5
 control_points = [
   [0,  0],
   [0,  5],
   [5, -5],
   [5,  0]
 ]
-```
-3. Initialize the desired interval between points.
-```python
-interval = 0.5
-```
-4. Split the curve.
-```python
-time, points = splitter.split(control_points, interval)
+
+time, points = splitter.split(control_points, points_interval)
+
+point_x = [point[0] for point in points]
+point_y = [point[1] for point in points]
+
+pyplot.plot(point_x, point_y)
+pyplot.scatter(point_x, point_y)
+pyplot.show()
 ```
