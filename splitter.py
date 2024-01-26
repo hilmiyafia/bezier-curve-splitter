@@ -1,4 +1,4 @@
-def position(controls, time):
+def Position(controls, time):
    a = 1 * ((1 - time) ** 3) * (time ** 0)
    b = 3 * ((1 - time) ** 2) * (time ** 1)
    c = 3 * ((1 - time) ** 1) * (time ** 2)
@@ -7,7 +7,7 @@ def position(controls, time):
    y = a * controls[0][1] + b * controls[1][1] + c * controls[2][1] + d * controls[3][1]
    return x, y
 
-def speed(controls, time):
+def Speed(controls, time):
    a = 3 * ((1 - time) ** 2) * (time ** 0)
    b = 6 * ((1 - time) ** 1) * (time ** 1)
    c = 3 * ((1 - time) ** 0) * (time ** 2)
@@ -15,14 +15,14 @@ def speed(controls, time):
    y = a * (controls[1][1] - controls[0][1]) + b * (controls[2][1] - controls[1][1]) + c * (controls[3][1] - controls[2][1])
    return (x ** 2 + y ** 2) ** 0.5
 
-def split(controls, interval, epsilon=1e-2, maximum_iteration=100):
+def Split(controls, interval, epsilon=1e-2, maximum_iteration=100):
    times = [0]
    points = [controls[0]]
    while True:
-      delta_time = interval / (speed(controls, times[-1]) + 1e-6)
+      delta_time = interval / (Speed(controls, times[-1]) + 1e-6)
       for iteration in range(maximum_iteration):
          new_time = times[-1] + delta_time
-         new_point = position(controls, new_time)
+         new_point = Position(controls, new_time)
          delta_point = ((new_point[0] - points[-1][0]) ** 2 + (new_point[1] - points[-1][1]) ** 2) ** 0.5
          if abs(delta_point - interval) < epsilon: break
          delta_time *= 0.5 * (interval / delta_point + 1)
